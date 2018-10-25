@@ -1,0 +1,7 @@
+en:
+  inline_forms:
+    general:
+      application_title: CurEduLinks
+    devise:
+      title_for_devise: CurEduLinks
+      welcome: Welcome to CurEduLinks!
