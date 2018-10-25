@@ -87,30 +87,19 @@ Rails.application.configure do
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
-  
-# for devise
-config.action_mailer.default_url_options = { protocol: 'https', host: 'YOURHOSTNAME' }
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  address: 'YOURMAILSERVER',
-  enable_starttls_auto: true,
-  password: 'YOURPASSWORD',
-  user_name: 'YOURUSERNAME'
-}
-
-end
+  end
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
 # for devise
-config.action_mailer.default_url_options = { protocol: 'https', host: 'YOURHOSTNAME' }
+config.action_mailer.default_url_options = { protocol: 'https', host: 'edulinks.xyz' }
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
-  address: 'YOURMAILSERVER',
-  enable_starttls_auto: true,
-  password: 'YOURPASSWORD',
-  user_name: 'YOURUSERNAME'
+  :enable_starttls_auto => true,
+  :address => ENV["ACTION_MAILER_SMTP_SETTINGS_ADDRESS"],
+  :user_name => ENV["ACTION_MAILER_SMTP_SETTINGS_USERNAME"],
+  :password => ENV["ACTION_MAILER_SMTP_SETTINGS_PASSWORD"],
 }
 
 end

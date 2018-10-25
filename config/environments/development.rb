@@ -61,10 +61,10 @@ Rails.application.configure do
 config.action_mailer.default_url_options = { protocol: 'http', host: 'localhost', port: 3000 }
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
-  address: 'YOURMAILSERVER',
-  enable_starttls_auto: true,
-  password: 'YOURPASSWORD',
-  user_name: 'YOURUSERNAME'
+  :enable_starttls_auto => true,
+  :address => ENV["ACTION_MAILER_SMTP_SETTINGS_ADDRESS"],
+  :user_name => ENV["ACTION_MAILER_SMTP_SETTINGS_USERNAME"],
+  :password => ENV["ACTION_MAILER_SMTP_SETTINGS_PASSWORD"],
 }
 
 
