@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 # created by inline_forms 5.2.4 on {Date.today}
 
-gem 'cancan', :git => "https://github.com/acesuares/cancan.git", :branch => "2.0"
+gem 'cancancan'
 gem 'carrierwave'
 gem 'ckeditor', git: 'https://github.com/galetahub/ckeditor'
 gem 'coffee-rails'

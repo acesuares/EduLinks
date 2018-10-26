@@ -1,0 +1,24 @@
+#!/bin/bash
+
+rails g inline_forms Group \
+	name:string \
+	links:has_and_belongs_to_many \
+	_enabled:yes \
+	_presentation:'#{name}' \
+	_order:name -f
+
+rails g inline_forms Topic \
+	name:string \
+	links:has_and_belongs_to_many \
+	_enabled:yes \
+	_presentation:'#{name}' \
+	_order:name -f
+
+rails g inline_forms Link \
+	name:string \
+	user:belongs_to \
+	groups:has_and_belongs_to_many \
+	topics:has_and_belongs_to_many \
+	_enabled:yes \
+	_presentation:'#{name}' \
+	_order:name -f

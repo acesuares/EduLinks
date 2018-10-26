@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  resources :school_types do
+    post 'revert', :on => :member
+    get 'list_versions', :on => :member
+  end
+  resources :links do
+    post 'revert', :on => :member
+    get 'list_versions', :on => :member
+  end
+  resources :topics do
+    post 'revert', :on => :member
+    get 'list_versions', :on => :member
+  end
+  resources :groups do
+    post 'revert', :on => :member
+    get 'list_versions', :on => :member
+  end
   resources :inline_forms_translations do
     post 'revert', :on => :member
     get 'list_versions', :on => :member

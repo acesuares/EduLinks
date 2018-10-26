@@ -1,0 +1,9 @@
+#!/bin/bash
+
+rails g inline_forms SchoolType \
+	name:string \
+	groups:has_many \
+	_enabled:yes \
+	_presentation:'#{name}' \
+	_order:name -f
+
