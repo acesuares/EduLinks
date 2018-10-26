@@ -38,7 +38,7 @@ namespace :figaro do
     on roles(:all) do
       execute "mkdir -p #{shared_path}/config"
       upload! 'config/application.yml', "#{shared_path}/config/application.yml"
-    end
+      upload! 'config/master.key', "#{shared_path}/config/master.key"    end
   end
 end
 
