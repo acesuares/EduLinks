@@ -1,0 +1,39 @@
+<div class="contain-to-grid fixed">
+  <nav class="top-bar" data-topbar role="navigation">
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <% SchoolType.all.each do |school_type| %>
+          <% unless school_type.links.empty? %>
+            <li class="has-dropdown">
+              <a href="#"><%= school_type.name %></a>
+              <ul class="dropdown m-menu">
+                <% school_type.groups.each do |group| %>
+                  <% unless group.links.empty? %>
+                    <li>
+                      <div class="row">
+                        <div class="medium-4 column">
+                          <a href="#"><%= group.name %></a>
+                        </div>
+                        <div class="medium-8 column">
+                          <ul>
+                            <% group.topic_names.each do |topic_name| %>
+                              <li>
+                                <a href="#"><%= topic_name %></a>
+                              </li>
+                            <% end %>
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+      <li>
+    </section>
+  </nav>
+</div>

@@ -5,7 +5,7 @@ class SchoolType < ApplicationRecord
   has_paper_trail
 
   has_many :groups
-
+  has_many :links, through: :groups
   def _presentation
     "#{name}"
   end

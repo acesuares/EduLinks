@@ -13,4 +13,10 @@ class LinksController < InlineFormsController
     super
   end
 
+  def homepage
+    @links = Link.all
+    render layout: 'homepage'
+  end
+
+
 end

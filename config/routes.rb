@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :links do
     post 'revert', :on => :member
     get 'list_versions', :on => :member
+    get 'homepage', on: :collection
   end
   resources :topics do
     post 'revert', :on => :member
