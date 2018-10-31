@@ -1,20 +1,23 @@
-class Topic < ApplicationRecord
+class SubTopic < ApplicationRecord
   attr_reader :per_page
   @per_page = 7
   attr_writer :inline_forms_attribute_list
   has_paper_trail
 
-  has_many :sub_topics
-  has_many :links, through: :sub_topics
+  belongs_to :topic
+  has_and_belongs_to_many :links
+
   def _presentation
-    "#{name}"
+    "#{topic.name} - #{name}"
   end
 
 
   def inline_forms_attribute_list
     @inline_forms_attribute_list ||= [
       [ :name , "name", :text_field ],
-      [ :sub_topics, '', :info_list ],
+      [ :description , "description", :text_area ],
+      [ :topic, '', :dropdown ],
+      [ :links, '', :info_list]
     ]
   end
 

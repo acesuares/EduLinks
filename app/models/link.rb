@@ -7,7 +7,8 @@ class Link < ApplicationRecord
   belongs_to :user
 
   has_and_belongs_to_many :groups
-  has_and_belongs_to_many :topics
+  has_and_belongs_to_many :sub_topics
+  has_many :topics, through: :sub_topics
 
   def _presentation
     "#{name}"
@@ -18,7 +19,7 @@ class Link < ApplicationRecord
     @inline_forms_attribute_list ||= [
       [ :name , "name", :text_field ],
       [ :user, '', :info ],
-      [ :topics, '', :check_list],
+      [ :sub_topics, '', :check_list],
       [ :groups, '', :check_list],
       [ :link , "name", :text_field ],
       [ :description , "name", :text_area ],

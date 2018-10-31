@@ -1,0 +1,9 @@
+#!/bin/bash
+
+rails g inline_forms SubTopic \
+	name:string \
+	description:text \
+	topic:belongs_to \
+	_enabled:yes \
+	_presentation:'#{name}' \
+	_order:name -f

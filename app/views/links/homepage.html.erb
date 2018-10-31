@@ -3,34 +3,39 @@
     <section class="top-bar-section">
       <!-- Right Nav Section -->
       <ul class="right">
-        <% SchoolType.all.each do |school_type| %>
-          <% unless school_type.links.empty? %>
+        <% SchoolType.select{|school_type| !school_type.links.empty? }.each do |school_type| %>
             <li class="has-dropdown">
               <a href="#"><%= school_type.name %></a>
               <ul class="dropdown m-menu">
-                <% school_type.groups.each do |group| %>
-                  <% unless group.links.empty? %>
-                    <li>
-                      <div class="row">
-                        <div class="medium-4 column">
-                          <a href="#"><%= group.name %></a>
-                        </div>
-                        <div class="medium-8 column">
-                          <ul>
-                            <% group.topic_names.each do |topic_name| %>
-                              <li>
-                                <a href="#"><%= topic_name %></a>
-                              </li>
-                            <% end %>
-                          </ul>
-                        </div>
+                <% school_type.groups.select{|group| !group.links.empty? }.sort.each do |group| %>
+                  <li>
+                    <div class="row">
+                      <div class="medium-2 column">
+                        <a href="#"><%= group.name %></a>
                       </div>
-                    </li>
-                  <% end %>
+                      <div class="medium-10 column">
+                        <% group.topics.uniq.each do |topic| %>
+                          <div class="row">
+                            <div class="medium-3 column">
+                              <a href="#"><%= topic.name %></a>
+                            </div>
+                            <div class="medium-9 column">
+                              <ul>
+                                <% group.sub_topics.select{|sub_topic| sub_topic.topic == topic}.each do |sub_topic| %>
+                                  <li>
+                                    <a href="#"><%= sub_topic.name %></a>
+                                  </li>
+                                <% end %>
+                              </ul>
+                            </div>
+                          </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  </li>
                 <% end %>
               </ul>
             </li>
-          <% end %>
         <% end %>
       </ul>
       <li>

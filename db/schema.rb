@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_26_114354) do
+ActiveRecord::Schema.define(version: 2018_10_31_116958) do
 
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -74,11 +74,11 @@ ActiveRecord::Schema.define(version: 2018_10_26_114354) do
     t.index ["user_id"], name: "index_links_on_user_id"
   end
 
-  create_table "links_topics", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "links_sub_topics", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "link_id"
-    t.integer "topic_id"
-    t.index ["link_id"], name: "index_links_topics_on_link_id"
-    t.index ["topic_id"], name: "index_links_topics_on_topic_id"
+    t.integer "sub_topic_id"
+    t.index ["link_id"], name: "index_links_sub_topics_on_link_id"
+    t.index ["sub_topic_id"], name: "index_links_sub_topics_on_sub_topic_id"
   end
 
   create_table "locales", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -104,6 +104,15 @@ ActiveRecord::Schema.define(version: 2018_10_26_114354) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sub_topics", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_sub_topics_on_topic_id"
   end
 
   create_table "topics", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|

@@ -11,7 +11,7 @@ class ApplicationController < InlineFormsApplicationController
     redirect_to root_path, alert: exception.message
   end
 
-  ActionView::CompiledTemplates::MODEL_TABS = %w(school_types links topics groups )
+  ActionView::CompiledTemplates::MODEL_TABS = %w(sub_topics school_types links topics groups )
 
   # Uncomment next line if you want I18n (based on subdomain)
   # before_action :set_locale

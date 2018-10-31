@@ -6,16 +6,13 @@ class Group < ApplicationRecord
 
   has_and_belongs_to_many :links
   belongs_to :school_type
+  has_many :sub_topics, through: :links
   has_many :topics, through: :links
 
   default_scope { order('name ASC') }
 
   def _presentation
     "#{name} (#{school_type.name})"
-  end
-
-  def topic_names
-    topics.map(&:name).sort.uniq
   end
 
   def inline_forms_attribute_list
