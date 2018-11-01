@@ -1,0 +1,47 @@
+<%= params.inspect %>
+<div class="contain-to-grid fixed">
+  <nav class="top-bar" data-topbar role="navigation">
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <% SchoolType.select{|school_type| !school_type.links.where(user: @user).empty? }.each do |school_type| %>
+            <li class="has-dropdown">
+              <a href="#"><%= school_type.name %></a>
+              <ul class="dropdown m-menu">
+                <% school_type.groups.select{|group| !group.links.where(user: @user).empty? }.sort.each do |group| %>
+                  <li>
+                    <div class="row">
+                      <div class="medium-2 column">
+                        <a href="#"><%= group.name %></a>
+                      </div>
+                      <div class="medium-10 column">
+                        <% group.topics.select{|topic| !topic.links.where(user: @user).empty? }.uniq.each do |topic| %>
+                          <div class="row">
+                            <div class="medium-3 column">
+                              <a href="#"><%= topic.name %></a>
+                            </div>
+                            <div class="medium-9 column">
+                              <ul>
+                                <% group.sub_topics.select{|sub_topic| sub_topic.topic == topic && !sub_topic.links.where(user: @user).empty? }.uniq.each do |sub_topic| %>
+                                  <li>
+                                    <a href="<%= "school_type/#{school_type.id}/group/#{group.id}/topic/#{topic.id}/sub_topic/#{sub_topic.id}" %>">
+                                      <%= sub_topic.name %> (<%= sub_topic.links.where(user: @user).count %>)
+                                    </a>
+                                  </li>
+                                <% end %>
+                              </ul>
+                            </div>
+                          </div>
+                        <% end %>
+                      </div>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+            </li>
+        <% end %>
+      </ul>
+      <li>
+    </section>
+  </nav>
+</div>

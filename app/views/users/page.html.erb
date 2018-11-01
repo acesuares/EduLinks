@@ -1,0 +1,12 @@
+<% user = User.find(params[:user_id]) %>
+User: <%= user.name %><br />
+SchoolType: <%= SchoolType.find(params[:school_type_id]).name %><br />
+Group: <%= Group.find(params[:group_id]).name %><br />
+Topic: <%= Topic.find(params[:topic_id]).name %><br />
+<% sub_topic = SubTopic.find(params[:sub_topic_id]) %>
+SubTopic: <%= sub_topic.name %><br />
+
+<h1>Links</h1>
+<% sub_topic.links.where(user: user).each do |link| %>
+<%= link.name %><br/>
+<% end %>

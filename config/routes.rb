@@ -45,9 +45,11 @@ Rails.application.routes.draw do
     resources :users do
       post 'revert', :on => :member
       get 'list_versions', :on => :member
+      get 'homepage', :on => :member
+      get 'school_type/:school_type_id/group/:group_id/topic/:topic_id/sub_topic/:sub_topic_id', to: 'users#page'
+
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   root :to => 'links#homepage'
 
 end
