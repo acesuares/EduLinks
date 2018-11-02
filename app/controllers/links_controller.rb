@@ -1,5 +1,7 @@
 class LinksController < InlineFormsController
   set_tab :link
+  before_action :authenticate_user!, except: :homepage
+
 
   def new
     @object = @Klass.new
@@ -18,5 +20,7 @@ class LinksController < InlineFormsController
     render layout: 'homepage'
   end
 
+  def pooh
+  end
 
 end

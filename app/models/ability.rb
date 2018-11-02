@@ -12,7 +12,7 @@ class Ability
     if user.role? :superadmin
       can :manage, :all
     else
-      # put restrictions for other users here
+      can :manage, :all
     end
   end
 end

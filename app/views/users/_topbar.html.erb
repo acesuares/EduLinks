@@ -1,33 +1,37 @@
-available
-<%= params.inspect %>
-<%= request.subdomain.inspect %>
-
 <div class="contain-to-grid fixed">
   <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#"><%= @user.name %> (<%= @user.username %>)</a></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
     <section class="top-bar-section">
       <!-- Right Nav Section -->
       <ul class="right">
-        <% SchoolType.select{|school_type| !school_type.links.empty? }.each do |school_type| %>
+        <% SchoolType.select{|school_type| !school_type.links.where(user: @user).empty? }.each do |school_type| %>
             <li class="has-dropdown">
               <a href="#"><%= school_type.name %></a>
               <ul class="dropdown m-menu">
-                <% school_type.groups.select{|group| !group.links.empty? }.sort.each do |group| %>
+                <% school_type.groups.select{|group| !group.links.where(user: @user).empty? }.sort.each do |group| %>
                   <li>
                     <div class="row">
                       <div class="medium-2 column">
                         <a href="#"><%= group.name %></a>
                       </div>
                       <div class="medium-10 column">
-                        <% group.topics.uniq.each do |topic| %>
+                        <% group.topics.select{|topic| !topic.links.where(user: @user).empty? }.uniq.each do |topic| %>
                           <div class="row">
                             <div class="medium-3 column">
                               <a href="#"><%= topic.name %></a>
                             </div>
                             <div class="medium-9 column">
                               <ul>
-                                <% group.sub_topics.select{|sub_topic| sub_topic.topic == topic}.each do |sub_topic| %>
+                                <% group.sub_topics.select{|sub_topic| sub_topic.topic == topic && !sub_topic.links.where(user: @user).empty? }.uniq.each do |sub_topic| %>
                                   <li>
-                                    <a href="#"><%= sub_topic.name %></a>
+                                    <a href="<%= "school_type/#{school_type.id}/group/#{group.id}/topic/#{topic.id}/sub_topic/#{sub_topic.id}" %>">
+                                      <%= sub_topic.name %> (<%= sub_topic.links.where(user: @user).count %>)
+                                    </a>
                                   </li>
                                 <% end %>
                               </ul>

@@ -41,14 +41,16 @@ Rails.application.routes.draw do
     post 'revert', :on => :member
     get 'list_versions', :on => :member
   end
+
   devise_for :users, :path_prefix => 'auth'
     resources :users do
       post 'revert', :on => :member
       get 'list_versions', :on => :member
       get 'homepage', :on => :member
       get 'school_type/:school_type_id/group/:group_id/topic/:topic_id/sub_topic/:sub_topic_id', to: 'users#page'
-
   end
+
+  get '/', to: 'users#homepage', constraints: { subdomain: /^[a-zA-Z]+$/ }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :to => 'links#homepage'
 

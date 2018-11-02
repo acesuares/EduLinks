@@ -22,17 +22,18 @@ class User < ApplicationRecord
 
   # validations
   validates :name, :presence => true
+  validates :username, :presence => true
 
-  default_scope {order :name}
+  default_scope {order :username}
 
   # pagination
   attr_reader :per_page
-  @per_page = 7
+  @per_page = 99
 
   has_paper_trail
 
   def _presentation
-    "#{name}"
+    "#{username} (#{name}, #{email})"
   end
 
   def role?(role)
@@ -43,6 +44,7 @@ class User < ApplicationRecord
     @inline_forms_attribute_list ||= [
       [ :header_user_login,         '', :header ],
       [ :name,                      '', :text_field ],
+      [ :username,                  '', :text_field ],
       [ :email,                     '', :text_field ],
       [ :locale ,                   '', :dropdown ],
       [ :password,                  '', :devise_password_field ],
