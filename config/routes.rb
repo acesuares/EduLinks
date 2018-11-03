@@ -46,11 +46,17 @@ Rails.application.routes.draw do
     resources :users do
       post 'revert', :on => :member
       get 'list_versions', :on => :member
-      get 'homepage', :on => :member
-      get 'school_type/:school_type_id/group/:group_id/topic/:topic_id/sub_topic/:sub_topic_id', to: 'users#page'
   end
 
   get '/', to: 'users#homepage', constraints: { subdomain: /^[a-zA-Z]+$/ }
+  get '/:school_type_slug/:group_slug/:topic_slug/:sub_topic_slug',
+    to: 'users#page',
+    constraints: {  school_type_slug: SLUG_REGEX,
+                    group_slug:       SLUG_REGEX,
+                    topic_slug:       SLUG_REGEX,
+                    sub_topic_slug:   SLUG_REGEX,
+                    subdomain:        USERNAME_REGEX }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :to => 'links#homepage'
 

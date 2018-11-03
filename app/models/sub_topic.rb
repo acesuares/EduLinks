@@ -15,6 +15,7 @@ class SubTopic < ApplicationRecord
   def inline_forms_attribute_list
     @inline_forms_attribute_list ||= [
       [ :name , "name", :text_field ],
+      [ :slug, '', :text_field ],
       [ :description , "description", :text_area ],
       [ :topic, '', :dropdown ],
       [ :links, '', :info_list]

@@ -14,6 +14,7 @@ class SchoolType < ApplicationRecord
   def inline_forms_attribute_list
     @inline_forms_attribute_list ||= [
       [ :name , "name", :text_field ],
+      [ :slug, '', :text_field ],
       [ :groups, '', :info_list ]
     ]
   end

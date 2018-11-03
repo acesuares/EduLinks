@@ -18,6 +18,7 @@ class Group < ApplicationRecord
   def inline_forms_attribute_list
     @inline_forms_attribute_list ||= [
       [ :name, '', :text_field ],
+      [ :slug, '', :text_field ],
       [ :school_type, '', :dropdown ],
       [ :links, '', :info_list ],
     ]
