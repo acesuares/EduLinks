@@ -12,5 +12,36 @@
  *
 
  *= require foundation_and_overrides
- 
+
  */
+
+.link_block {
+  font-size: 100%;
+  border: 1px solid black;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 7px;
+}
+
+.link_block h1 {
+  font-size: 140%;
+  margin: 0;
+  padding: 0 7px 0 7px;
+  background-color: #ffd5cc;
+  border-bottom: 1px solid black;
+  }
+.link_block p {
+  margin: 0;
+  padding: 0 7px 0 7px;
+  background-color: #e1f2ea;
+  border-bottom: 1px solid black;
+  max-height: 140px;
+  overflow: scroll;
+
+}
+.link_block a {
+  margin: 0;
+  padding: 0 7px 0 7px;
+  background-color: #fff;
+  color: #c63636;
+}

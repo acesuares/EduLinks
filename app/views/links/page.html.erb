@@ -1,10 +1,10 @@
 <%= render 'topbar' %>
 <div class="row">
-  <strong><%= @user.name %> &gt; <%= @group.name %> &gt; <%= @topic.name %> &gt; <%= @sub_topic.name %></strong>
+  <strong><%= @group.name %> &gt; <%= @topic.name %> &gt; <%= @sub_topic.name %></strong>
 </div>
 <div class="row">
   <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-4">
-    <% @sub_topic.links.where(user: @user).each do |link| %>
+    <% @sub_topic.links.each do |link| %>
       <li>
         <%= display_link link %>
       </li>
