@@ -45,3 +45,34 @@
   background-color: #fff;
   color: #c63636;
 }
+ {
+  height: 100px;
+  min-height: 20px;
+}
+
+.link_name_show {
+    max-height: 40px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    transition: max-height 0.15s ease-out !important;
+}
+
+.link_name_show:hover {
+    max-height: 500px !important;
+    transition: max-height 0.25s ease-in !important;
+    overflow: visible !important;
+    white-space: normal !important;
+}
+
+.link_description_show {
+    max-height: 120px !important;
+    overflow: hidden !important;
+    transition: max-height 0.15s ease-out !important;
+}
+
+.link_description_show:hover {
+    max-height: 900px !important;
+    transition: max-height 0.25s ease-in !important;
+    overflow: visible !important;
+}

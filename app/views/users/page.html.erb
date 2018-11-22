@@ -1,6 +1,11 @@
 <%= render 'topbar' %>
 <div class="row">
-  <strong><%= @user.name %> &gt; <%= @group.name %> &gt; <%= @topic.name %> &gt; <%= @sub_topic.name %></strong>
+  <ul class="breadcrumbs">
+    <li><%= @user.username %></li>
+    <li><%= @group.name %></li>
+    <li><%= @topic.name %></li>
+    <li class="current"><%= @sub_topic.name %></li>
+  </ul>
 </div>
 <div class="row">
   <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-4">
