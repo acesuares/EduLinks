@@ -1,3 +1,4 @@
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -30,6 +31,7 @@
   background-color: #ffd5cc;
   border-bottom: 1px solid black;
   }
+
 .link_block p {
   margin: 0;
   padding: 0 7px 0 7px;
@@ -46,6 +48,13 @@
   color: #c63636;
 }
 
+.link_block:hover .link_name_show, .link_block:hover .link_description_show{
+    max-height: 1200px !important;
+    transition: max-height 0.25s ease-in !important;
+    overflow: visible !important;
+    white-space: normal !important;
+}
+
 .link_name_show {
     max-height: 40px !important;
     white-space: nowrap !important;
@@ -54,21 +63,8 @@
     transition: max-height 0.15s ease-out !important;
 }
 
-.link_name_show:hover {
-    max-height: 500px !important;
-    transition: max-height 0.25s ease-in !important;
-    overflow: visible !important;
-    white-space: normal !important;
-}
-
 .link_description_show {
     max-height: 120px !important;
     overflow: hidden !important;
     transition: max-height 0.15s ease-out !important;
-}
-
-.link_description_show:hover {
-    max-height: 900px !important;
-    transition: max-height 0.25s ease-in !important;
-    overflow: visible !important;
 }
