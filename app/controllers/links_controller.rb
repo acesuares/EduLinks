@@ -20,6 +20,12 @@ class LinksController < InlineFormsController
     render layout: 'homepage'
   end
 
+  def scrape
+    @doc = Nokogiri::HTML(open('http://jufansje.yurls.net/'))
+    @pages = @doc.css('.pages-desktop li a').map{|page| page['href'].gsub('#boxes-container','')}
+    @page = Nokogiri::HTML(open("http://jufansje.yurls.net/#{@pages.first}")).css('.link-container a')
+  end
+
   def page
     @group = Group.find_by(slug: params[:group_slug])
     redirect_to root_url(:host => request.domain) and return if @group.nil?

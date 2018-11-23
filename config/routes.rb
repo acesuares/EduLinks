@@ -58,6 +58,7 @@ Rails.application.routes.draw do
                     subdomain:        USERNAME_REGEX }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/scrape', to: 'links#scrape'
   get '/:school_type_slug/:group_slug/:topic_slug/:sub_topic_slug',
     to: 'links#page'
   root :to => 'links#homepage'

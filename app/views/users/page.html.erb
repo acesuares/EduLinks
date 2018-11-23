@@ -5,9 +5,9 @@
     <% @links.each do |link| %>
       <li>
         <%= content_tag(:div,
-              content_tag(:h1, link_to(link.name, link.link), class: :link_name) +
-              content_tag(:p, link.description, class: :link_description) +
-              link_to(link.link, link.link, class: :link_link),
+              content_tag(:h1,  link_to(link.name, link.link), class: :link_name) +
+              content_tag(:p,   link.description, class: :link_description) +
+              content_tag(:div, link_to(link.link, link.link), class: :link_link),
             class: :link_block) %>
       </li>
     <% end %>
