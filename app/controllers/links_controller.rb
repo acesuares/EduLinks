@@ -1,6 +1,6 @@
 class LinksController < InlineFormsController
   set_tab :link
-  before_action :authenticate_user!, except: :homepage
+  before_action :authenticate_user!, except: [:homepage, :page]
 
 
   def new
@@ -27,6 +27,7 @@ class LinksController < InlineFormsController
     redirect_to root_url(:host => request.domain) and return if @topic.nil?
     @sub_topic = SubTopic.find_by(slug: params[:sub_topic_slug])
     redirect_to root_url(:host => request.domain) and return if @sub_topic.nil?
+    @links = @sub_topic.links
     render layout: 'homepage'
   end
 

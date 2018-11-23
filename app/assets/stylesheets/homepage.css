@@ -48,14 +48,17 @@
   color: #c63636;
 }
 
-.link_block:hover .link_name_show, .link_block:hover .link_description_show{
+.link_block:hover .link_name,
+.link_block:hover .link_description,
+.link_block:hover .link_link
+{
     max-height: 1200px !important;
     transition: max-height 0.25s ease-in !important;
     overflow: visible !important;
     white-space: normal !important;
 }
 
-.link_name_show {
+.link_name, .link_link {
     max-height: 40px !important;
     white-space: nowrap !important;
     overflow: hidden !important;
@@ -63,7 +66,7 @@
     transition: max-height 0.15s ease-out !important;
 }
 
-.link_description_show {
+.link_description {
     max-height: 120px !important;
     overflow: hidden !important;
     transition: max-height 0.15s ease-out !important;
