@@ -1,0 +1,10 @@
+Hello
+<% @pages.each do |page| %>
+<%= page %> <br />
+<% end %>
+<% @page.each do |page|%>
+<% unless page['id'].nil? %>
+  <%= page['href'] %> <br />
+  <%= page.inner_html %> <br />
+  <% end %>
+<% end %>

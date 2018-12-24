@@ -3,6 +3,7 @@ class Link < ApplicationRecord
   @per_page = 7
   attr_writer :inline_forms_attribute_list
   has_paper_trail
+  mount_uploader :image, ImageUploader
 
   belongs_to :user
 
@@ -22,7 +23,8 @@ class Link < ApplicationRecord
       [ :sub_topics, '', :check_list],
       [ :groups, '', :check_list],
       [ :link , "name", :text_field ],
-      [ :description , "name", :text_area ],
+      [ :image , "name", :image_field ],
+      [ :description , "name", :text_area_without_ckeditor ],
 
     ]
   end

@@ -4,11 +4,17 @@
   <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-4">
     <% @links.each do |link| %>
       <li>
-        <%= content_tag(:div,
-              content_tag(:h1,  link_to(link.name, link.link), class: :link_name) +
-              content_tag(:p,   link.description, class: :link_description) +
-              content_tag(:div, link_to(link.link, link.link), class: :link_link),
-            class: :link_block) %>
+        <%=
+              content_tag(:div,
+                link_to( (
+                  content_tag(:h1,    link.name, class: :link_name) +
+                  content_tag(:div,
+                    content_tag(:div, (image_tag(link.image.palm.url) rescue ''), class: :link_image) +
+                    content_tag(:div, simple_format(link.description), class: :link_description),
+                  class: :link_content) +
+                  content_tag(:div, link.link, class: :link_link)
+                ), link.link),
+              class: :link_block) %>
       </li>
     <% end %>
   </ul>

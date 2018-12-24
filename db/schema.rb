@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_03_104706) do
+ActiveRecord::Schema.define(version: 2018_12_24_100633) do
 
   create_table "ckeditor_assets", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "data_file_name", null: false
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2018_11_03_104706) do
     t.datetime "updated_at", null: false
     t.string "link"
     t.text "description"
+    t.string "image"
     t.index ["user_id"], name: "index_links_on_user_id"
   end
 

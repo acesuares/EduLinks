@@ -23,50 +23,64 @@
   padding-bottom: 7px;
 }
 
-.link_block h1 {
+.link_block a {
+  margin: 0;
+  padding: 0 !important;
+  color: #000000 !important;
+}
+
+.link_name {
   font-size: 140%;
   margin: 0;
   padding: 0 7px 0 7px;
   background-color: #ffd5cc;
   border-bottom: 1px solid black;
-}
-
-.link_block p {
-  margin: 0;
-  padding: 0 7px 0 7px;
-  background-color: #e1f2ea;
-  border-bottom: 1px solid black;
-  max-height: 140px;
-  overflow: scroll;
-
-}
-
-.link_block a {
-  margin: 0;
-  padding: 0 7px 0 7px;
-  color: #000000;
-}
-
-.link_block:hover .link_name,
-.link_block:hover .link_description,
-.link_block:hover .link_link {
-  max-height: 1200px !important;
-  transition: max-height 0.25s ease-in !important;
-  overflow: visible !important;
-  white-space: normal !important;
-}
-
-.link_name, .link_link {
-  max-height: 40px !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
+  max-height: 40px;
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
-  transition: max-height 0.15s ease-out !important;
+  transition: max-height 0.15s ease-out;
+}
+
+.link_content {
+  max-height: 220px;
+}
+
+.link_image {
+  max-height: 100px;
+  overflow: hidden;
 }
 
 .link_description {
-  max-height: 120px !important;
-  min-height: 120px;
-  overflow: hidden !important;
-  transition: max-height 0.15s ease-out !important;
+  margin: 0;
+  padding: 7px 7px 0 7px;
+  background-color: #e1f2ea;
+  border-bottom: 1px solid black;
+  max-height: 220px;
+  overflow: hidden;
+  transition: max-height 0.15s ease-out;
+}
+
+.link_description p {
+  padding: 0;
+}
+
+.link_link {
+  padding: 7px 7px 0 7px;
+  max-height: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: max-height 0.15s ease-out;
+}
+
+.link_block:hover .link_name,
+.link_block:hover .link_content,
+.link_block:hover .link_description,
+.link_block:hover .link_link,
+.link_block:hover .link_image {
+  max-height: 1200px;
+  transition: max-height 0.25s ease-in;
+  overflow: visible;
+  white-space: normal;
 }
